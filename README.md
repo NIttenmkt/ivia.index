@@ -1,9 +1,10 @@
 # IVIA — AI Visibility Index
 
-**IVIA** (AI Visibility Index) is an experimental framework for measuring how entities are recognized, cited, and described within AI-generated responses.
+**IVIA** (AI Visibility Index) is an open framework for measuring how entities are recognized, cited, and described within AI-generated responses.
 
-It was developed as part of the **SAGEO methodology** by Nitten Marketing SpA (Santiago, Chile) and first validated in April 2026 on the domain [nittenmkt.cl](https://nittenmkt.cl).
+IVIA is part of the SAGEO methodology (Search AI & Generative Engine Optimization), developed by Nitten Marketing SpA (Santiago, Chile) and first validated in April 2026 on the domain [nittenmkt.cl](https://nittenmkt.cl).
 
+IVIA measures visibility where traditional SEO cannot: inside AI-generated answers.
 ---
 
 ## Why IVIA exists
@@ -17,7 +18,7 @@ IVIA measures something different:
 - Whether it appears in **high-intent queries**
 
 As generative AI systems replace traditional search for many queries, visibility shifts from *ranking* to *inclusion*. IVIA is an attempt to make that shift measurable.
-
+In AI systems, entities are not ranked — they are selected.
 ---
 
 ## The four dimensions
@@ -41,14 +42,13 @@ As generative AI systems replace traditional search for many queries, visibility
 
 ---
 
-## Formula
-
+## Scoring model
 ```
 IVIA = (P × 0.20) + (F × 0.30) + (PR × 0.30) + (C × 0.20)
 ```
 
 Result expressed on a 0–100 scale (multiply by 100).
-
+> IVIA converts qualitative AI visibility into a quantifiable signal.
 ---
 
 ## Interpretation scale
@@ -67,7 +67,7 @@ Result expressed on a 0–100 scale (multiply by 100).
 
 `v1.0 — Exploratory`
 
-IVIA is an exploratory instrument. It is not a standardized metric and has not been validated by third parties. Its value is directional, not statistically precise. See [/docs/limitaciones.md](/docs/limitaciones.md) for a full declaration of limitations.
+IVIA is an evolving framework. Current results should be interpreted as directional rather than statistically definitive. See [/docs/limitaciones.md](/docs/limitaciones.md) for a full declaration of limitations.
 
 ---
 
@@ -89,6 +89,14 @@ See [/examples/nitten-case.md](/examples/nitten-case.md) for the full documented
 - Establish a baseline before and after semantic infrastructure work
 
 ---
+## Conceptual shift
+
+IVIA is based on a structural change:
+
+Search engines rank documents.  
+AI systems generate answers.
+
+Visibility is no longer about ranking pages, but about being included in generated responses.
 
 ## Related framework
 
@@ -127,6 +135,7 @@ Or use the [CITATION.cff](CITATION.cff) file for automated citation tools.
 **Nitten Marketing SpA**  
 Santiago, Chile  
 [nittenmkt.cl](https://nittenmkt.cl) · agencia@nittenmkt.cl
+
 Initial release — IVIA v0.1
 
 *Developed by the Nitten team. Consolidated and presented by Maximiliano Acuña, OCC.*
