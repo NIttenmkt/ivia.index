@@ -127,6 +127,7 @@ Or use the [CITATION.cff](CITATION.cff) file for automated citation tools.
 **Nitten Marketing SpA**  
 Santiago, Chile  
 [nittenmkt.cl](https://nittenmkt.cl) · agencia@nittenmkt.cl
+Initial release — IVIA v0.1
 
 *Developed by the Nitten team. Consolidated and presented by Maximiliano Acuña, OCC.*
 
