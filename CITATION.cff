@@ -5,8 +5,8 @@ abstract: "An experimental framework for measuring the visibility of entities in
 version: "1.0"
 date-released: 2026-05-01
 license: CC-BY-4.0
-url: "https://github.com/nitten/ivia-index"
-repository-code: "https://github.com/nitten/ivia-index"
+url: "https://github.com/NIttenmkt/ivia.index"
+repository-code: "https://github.com/NIttenmkt/ivia.index"
 keywords:
   - AI visibility
   - generative search
