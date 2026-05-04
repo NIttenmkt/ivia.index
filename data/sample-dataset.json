@@ -1,0 +1,93 @@
+{
+  "dataset_info": {
+    "name": "IVIA Sample Dataset — Nitten Marketing SpA",
+    "description": "First validated IVIA measurement. Entity: Nitten Marketing SpA. Domain: nittenmkt.cl. April 2026.",
+    "version": "1.0",
+    "created": "2026-05-01",
+    "license": "CC BY 4.0",
+    "attribution": "Nitten Marketing SpA — https://nittenmkt.cl",
+    "schema": "../spec/ivia-schema.json"
+  },
+  "measurements": [
+    {
+      "entity": "Nitten Marketing SpA",
+      "domain": "nittenmkt.cl",
+      "measurement_date": "2026-04-29",
+      "model": "gemini",
+      "queries": [
+        {
+          "id": "q1",
+          "query": "Evaluating a digital marketing agency in Chile focused on AI positioning",
+          "query_es": "Evaluando contratar una agencia de marketing digital en Chile que entienda posicionamiento en IA",
+          "intent_type": "comparative",
+          "P": 0,
+          "F_raw": 0,
+          "F_normalized": 0.00,
+          "PR": 0,
+          "C": 0.7,
+          "notes": "No appearance. Gemini cites Best Solution, Postedin, Adinfluence"
+        },
+        {
+          "id": "q2",
+          "query": "Agencies working AEO and GEO in an integrated way",
+          "query_es": "¿Existen agencias que trabajen AEO y GEO de forma integrada?",
+          "intent_type": "comparative",
+          "P": 1,
+          "F_raw": 1,
+          "F_normalized": 0.33,
+          "PR": 1.0,
+          "C": 0.7,
+          "notes": "Appears 2nd. Gemini uses 'Arquitectura de Respuesta' — proprietary term from /aeo/ library",
+          "gemini_excerpt": "Nitten Marketing (Especialistas en AEO). Trabajan en la infraestructura de datos estructurados (Schema) y en la Arquitectura de Respuesta."
+        },
+        {
+          "id": "q3",
+          "query": "What do you know about Nitten Marketing in Chile?",
+          "query_es": "¿Qué sabes sobre Nitten Marketing en Chile? ¿En qué se diferencian?",
+          "intent_type": "brand_direct",
+          "P": 1,
+          "F_raw": 2,
+          "F_normalized": 0.67,
+          "PR": 1.0,
+          "C": 0.7,
+          "notes": "Full structured analysis. Strengths and gaps coherent with actual positioning",
+          "gemini_strengths": [
+            "Specialization in AEO niche",
+            "Transparency of metrics — focus on AI citations not vanity metrics",
+            "High-demand sectors: Health, B2B, Legal"
+          ],
+          "gemini_gaps": [
+            "Technical barrier for non-technical marketing managers",
+            "Dependency on AI adoption speed in Chile"
+          ]
+        },
+        {
+          "id": "q4",
+          "query": "agencias AEO en Chile",
+          "query_es": "agencias AEO en Chile",
+          "intent_type": "transactional",
+          "platform": "Google AI Overviews + organic",
+          "P": 1,
+          "F_raw": 1,
+          "F_normalized": 0.33,
+          "PR": 1.0,
+          "C": 1.0,
+          "notes": "Position #1 organic. Cited first in AI Overviews. Competitor SEO Austral appears twice as paid result."
+        }
+      ],
+      "dimension_averages": {
+        "P_final": 0.75,
+        "F_final": 0.33,
+        "PR_final": 0.75,
+        "C_final": 0.78
+      },
+      "formula": "(P*0.20)+(F*0.30)+(PR*0.30)+(C*0.20)",
+      "ivia_raw": 0.630,
+      "ivia_score": 64,
+      "ivia_level": "Developing (50-70)",
+      "main_gap": "Generic high-competition queries (P=0 in q1)",
+      "main_strength": "Descriptive precision (PR=1.0 in 3 of 4 queries)",
+      "next_measurement": "2026-07"
+    }
+  ]
+}

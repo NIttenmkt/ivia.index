@@ -1,0 +1,87 @@
+---
+title: "IVIA — Cálculo"
+description: "Fórmula, ponderaciones y procedimiento de cálculo del IVIA"
+version: "1.0"
+date: "2026-05-01"
+author: "Nitten Marketing SpA"
+related:
+  - dimensiones.md
+  - limitaciones.md
+---
+
+# IVIA — Cálculo
+
+## Fórmula
+
+```
+IVIA = (P × 0.20) + (F × 0.30) + (PR × 0.30) + (C × 0.20)
+```
+
+Resultado en escala 0–1. Multiplicar por 100 para expresar en escala 0–100.
+
+## Ponderaciones y justificación
+
+| Dimensión | Peso | Justificación |
+|-----------|------|---------------|
+| Presencia (P) | 0.20 | Condición necesaria pero no suficiente. Una entidad puede aparecer y ser descrita incorrectamente. |
+| Frecuencia (F) | 0.30 | Indicador de protagonismo en la respuesta. Mayor peso porque distingue entre mención marginal y referencia central. |
+| Precisión (PR) | 0.30 | La dimensión más estratégica: no basta aparecer, hay que ser descrito correctamente. Igual peso que F. |
+| Contexto (C) | 0.20 | Relevancia comercial de la aparición. Peso menor porque una entidad puede tener buen IVIA con apariciones en queries informacionales si la precisión es alta. |
+
+**Nota:** las ponderaciones actuales son el resultado del juicio del equipo Nitten en v1.0. No han sido validadas estadísticamente. Se propone revisarlas con datos acumulados de múltiples entidades en v2.0.
+
+## Procedimiento paso a paso
+
+### 1. Definir el conjunto de queries
+
+Seleccionar entre 10 y 15 queries que cubran los tres tipos de intención:
+- Al menos 3 informacionales
+- Al menos 4 comparativas
+- Al menos 3 transaccionales
+
+El conjunto debe ser representativo del universo de consultas relevantes para la entidad. Documentarlo antes de ejecutar los tests.
+
+### 2. Ejecutar los tests
+
+Para cada query, testear en el modelo o modelos objetivo. Registrar:
+- Si la entidad aparece (P: 0 o 1)
+- Con qué intensidad aparece (F: 0, 1, 2 o 3)
+- Con qué precisión se describe (PR: 0, 0.5 o 1)
+- Tipo de query (C: 0.3, 0.7 o 1.0)
+
+Recomendado: ejecutar cada query al menos 3 veces para promediar la variabilidad del modelo.
+
+### 3. Calcular promedios por dimensión
+
+```
+P_final  = promedio de todos los valores P del conjunto
+F_final  = promedio de todos los valores F normalizados (/3)
+PR_final = promedio de todos los valores PR del conjunto
+C_final  = promedio de todos los valores C del conjunto
+```
+
+### 4. Aplicar la fórmula
+
+```
+IVIA = (P_final × 0.20) + (F_final × 0.30) + (PR_final × 0.30) + (C_final × 0.20)
+```
+
+### 5. Interpretar
+
+| Score | Nivel |
+|-------|-------|
+| 0–30 | Invisible en IA |
+| 30–50 | Presencia inicial |
+| 50–70 | Posicionamiento en desarrollo |
+| 70–85 | Alta visibilidad |
+| 85–100 | Dominio en IA |
+
+## Ejemplo de registro
+
+| # | Query | Tipo | Modelo | P | F | PR | C |
+|---|-------|------|--------|---|---|----|---|
+| 1 | agencias AEO en Chile | Comparativa | Gemini | 1 | 1/3 | 1.0 | 0.7 |
+| 2 | qué es AEO | Informacional | Gemini | 0 | 0 | 0 | 0.3 |
+| 3 | contratar agencia AEO Santiago | Transaccional | Gemini | 1 | 2/3 | 1.0 | 1.0 |
+
+Ver caso completo en [/examples/nitten-case.md](../examples/nitten-case.md).

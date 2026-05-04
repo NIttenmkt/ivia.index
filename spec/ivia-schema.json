@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IVIA Measurement Record",
+  "description": "Schema for recording an IVIA measurement session. Developed by Nitten Marketing SpA.",
+  "version": "1.0",
+  "type": "object",
+  "properties": {
+    "entity": {
+      "type": "string",
+      "description": "Name of the entity being evaluated"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Primary domain of the entity (e.g. nittenmkt.cl)"
+    },
+    "measurement_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of measurement (ISO 8601)"
+    },
+    "model": {
+      "type": "string",
+      "enum": ["gemini", "chatgpt", "perplexity", "claude", "other"],
+      "description": "AI model used for the evaluation"
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "P": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Presence: proportion of queries where entity appears (0-1)"
+        },
+        "F": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Frequency: normalized mention intensity (0-1, original scale 0-3 divided by 3)"
+        },
+        "PR": {
+          "type": "number",
+          "enum": [0, 0.5, 1],
+          "description": "Precision: accuracy of entity description (0=incorrect, 0.5=partial, 1=correct)"
+        },
+        "C": {
+          "type": "number",
+          "enum": [0.3, 0.7, 1.0],
+          "description": "Context: query intent weight (0.3=informational, 0.7=comparative, 1.0=transactional)"
+        }
+      },
+      "required": ["P", "F", "PR", "C"]
+    },
+    "formula": {
+      "type": "string",
+      "const": "(P*0.20)+(F*0.30)+(PR*0.30)+(C*0.20)",
+      "description": "IVIA formula — do not modify in v1.0"
+    },
+    "ivia_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Final IVIA score (0-100 scale)"
+    },
+    "ivia_level": {
+      "type": "string",
+      "enum": [
+        "Invisible (0-30)",
+        "Initial presence (30-50)",
+        "Developing (50-70)",
+        "High visibility (70-85)",
+        "AI dominance (85-100)"
+      ]
+    },
+    "queries": {
+      "type": "array",
+      "description": "Individual query records",
+      "items": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string" },
+          "intent_type": {
+            "type": "string",
+            "enum": ["informational", "comparative", "transactional", "brand_direct"]
+          },
+          "P": { "type": "number", "enum": [0, 1] },
+          "F_raw": { "type": "number", "enum": [0, 1, 2, 3] },
+          "PR": { "type": "number", "enum": [0, 0.5, 1] },
+          "C": { "type": "number", "enum": [0.3, 0.7, 1.0] },
+          "notes": { "type": "string" }
+        },
+        "required": ["query", "intent_type", "P", "F_raw", "PR", "C"]
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "General notes about the measurement session"
+    },
+    "version": {
+      "type": "string",
+      "const": "1.0"
+    }
+  },
+  "required": ["entity", "measurement_date", "model", "dimensions", "ivia_score", "queries"]
+}
