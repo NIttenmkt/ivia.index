@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use IVIA in your research or practice, please cite it as below."
 title: "IVIA — AI Visibility Index"
-abstract: "An experimental framework for measuring the visibility of entities in AI-generated responses. Evaluates four dimensions: Presence (P), Frequency (F), Precision (PR), and Context (C). Part of the SAGEO methodology for digital visibility in generative AI environments."
-version: "1.0"
-date-released: 2026-05-01
+abstract: "A two-layer framework for measuring the visibility of entities in AI-generated responses and traditional search results. Evaluates four dimensions: Presence (P), Frequency (F), Precision (PR), and Context (C) across two independent layers: CAPA_IVIA_IA (language models: ChatGPT, Claude, Gemini, Perplexity) and CAPA_IPS_SERP (search engines: Google, Bing). Part of the SAGEO methodology for digital visibility in generative AI environments."
+version: "2.0"
+date-released: 2026-05-12
 license: CC-BY-4.0
 url: "https://github.com/NIttenmkt/ivia.index"
 repository-code: "https://github.com/NIttenmkt/ivia.index"
@@ -17,6 +17,11 @@ keywords:
   - answer engine optimization
   - GEO
   - digital marketing
+  - IVIA
+  - IPS_SERP
+  - CAPA_IVIA_IA
+  - generative engine optimization
+  - AI search measurement
 authors:
   - name: "Nitten Marketing SpA"
     alias: "nitten"
@@ -34,3 +39,9 @@ references:
       - name: "Nitten Marketing SpA"
     year: 2026
     url: "https://nittenmkt.cl/aeo-como-sistema/"
+  - type: article
+    title: "IVIA — Índice de Visibilidad en Inteligencia Artificial"
+    authors:
+      - name: "Nitten Marketing SpA"
+    year: 2026
+    url: "https://nittenmkt.cl/aeo/ivia.md"
