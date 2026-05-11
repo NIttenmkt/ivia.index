@@ -1,10 +1,10 @@
 ---
-title: IVIA — Metodología
-description: Fundamento metodológico del Índice de Visibilidad en Inteligencia Artificial v2.0. Dos capas independientes: CAPA_IVIA_IA y CAPA_IPS_SERP.
-version: 2.0
-date: 2026-05-12
-author: Nitten Marketing SpA
-language: es
+title: "IVIA — Metodología"
+description: "Fundamento metodológico del IVIA v2.0. Dos capas independientes: CAPA_IVIA_IA y CAPA_IPS_SERP."
+version: "2.0"
+date: "2026-05-12"
+author: "Nitten Marketing SpA"
+language: "es"
 related:
   - dimensiones.md
   - calculo.md
