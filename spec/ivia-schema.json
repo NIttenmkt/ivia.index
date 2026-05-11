@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "IVIA Measurement Record",
-  "description": "Schema for recording an IVIA measurement session. Developed by Nitten Marketing SpA.",
-  "version": "1.0",
+  "description": "Schema for recording an IVIA v2.0 measurement session. Two independent layers: CAPA_IVIA_IA (language models) and CAPA_IPS_SERP (search engines). Developed by Nitten Marketing SpA.",
+  "version": "2.0",
   "type": "object",
   "properties": {
     "entity": {
@@ -18,10 +18,15 @@
       "format": "date",
       "description": "Date of measurement (ISO 8601)"
     },
+    "layer": {
+      "type": "string",
+      "enum": ["CAPA_IVIA_IA", "CAPA_IPS_SERP"],
+      "description": "Measurement layer. CAPA_IVIA_IA for language models, CAPA_IPS_SERP for search engines."
+    },
     "model": {
       "type": "string",
-      "enum": ["gemini", "chatgpt", "perplexity", "claude", "other"],
-      "description": "AI model used for the evaluation"
+      "enum": ["chatgpt", "claude", "gemini", "perplexity", "google", "bing", "other"],
+      "description": "AI model or search engine used for the evaluation"
     },
     "dimensions": {
       "type": "object",
@@ -40,8 +45,8 @@
         },
         "PR": {
           "type": "number",
-          "enum": [0, 0.5, 1],
-          "description": "Precision: accuracy of entity description (0=incorrect, 0.5=partial, 1=correct)"
+          "enum": [1, 2, 3, 4, 5],
+          "description": "Precision raw score (1=incorrect, 2=incorrect attributes, 3=partially correct, 4=correct and aligned, 5=correct with own terminology). Normalization applied in formula: PR/4 for CAPA_IVIA_IA, PR/5 for CAPA_IPS_SERP."
         },
         "C": {
           "type": "number",
@@ -53,14 +58,16 @@
     },
     "formula": {
       "type": "string",
-      "const": "(P*0.20)+(F*0.30)+(PR*0.30)+(C*0.20)",
-      "description": "IVIA formula — do not modify in v1.0"
+      "enum": [
+        "[(P*0.20)+((F/3)*0.30)+((PR/4)*0.30)+(C*0.20)]*100",
+        "[(P*0.20)+((F/3)*0.30)+((PR/5)*0.30)+(C*0.20)]*100"
+      ],
+      "description": "IVIA formula. Use first for CAPA_IVIA_IA, second for CAPA_IPS_SERP."
     },
     "ivia_score": {
       "type": "number",
       "minimum": 0,
-      "maximum": 100,
-      "description": "Final IVIA score (0-100 scale)"
+      "description": "Final IVIA score (0-100 scale. Scores above 100 are valid for CAPA_IVIA_IA when PR=5.)"
     },
     "ivia_level": {
       "type": "string",
@@ -69,7 +76,7 @@
         "Initial presence (30-50)",
         "Developing (50-70)",
         "High visibility (70-85)",
-        "AI dominance (85-100)"
+        "Dominance (85-100)"
       ]
     },
     "queries": {
@@ -83,13 +90,34 @@
             "type": "string",
             "enum": ["informational", "comparative", "transactional", "brand_direct"]
           },
+          "chained": {
+            "type": "boolean",
+            "description": "True if this prompt chains from the previous query in the same session (applies to comparative prompt in standard v2.0 set)"
+          },
           "P": { "type": "number", "enum": [0, 1] },
-          "F_raw": { "type": "number", "enum": [0, 1, 2, 3] },
-          "PR": { "type": "number", "enum": [0, 0.5, 1] },
+          "F_raw": {
+            "type": "number",
+            "enum": [0, 1, 2, 3],
+            "description": "Raw frequency value before normalization"
+          },
+          "PR_raw": {
+            "type": "number",
+            "enum": [1, 2, 3, 4, 5],
+            "description": "Raw precision value before normalization"
+          },
           "C": { "type": "number", "enum": [0.3, 0.7, 1.0] },
+          "own_language": {
+            "type": "boolean",
+            "description": "True if the model used terminology specific to the entity"
+          },
+          "appeared_with": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Competitors or other entities mentioned alongside the evaluated entity"
+          },
           "notes": { "type": "string" }
         },
-        "required": ["query", "intent_type", "P", "F_raw", "PR", "C"]
+        "required": ["query", "intent_type", "P", "F_raw", "PR_raw", "C"]
       }
     },
     "notes": {
@@ -98,8 +126,8 @@
     },
     "version": {
       "type": "string",
-      "const": "1.0"
+      "const": "2.0"
     }
   },
-  "required": ["entity", "measurement_date", "model", "dimensions", "ivia_score", "queries"]
+  "required": ["entity", "measurement_date", "layer", "model", "dimensions", "ivia_score", "queries", "version"]
 }
