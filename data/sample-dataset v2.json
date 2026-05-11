@@ -1,0 +1,214 @@
+{
+  "dataset_info": {
+    "name": "IVIA Sample Dataset — Nitten Marketing SpA",
+    "description": "IVIA v2.0 measurement dataset. Entity: Nitten Marketing SpA. Domain: nittenmkt.cl. Two layers: CAPA_IVIA_IA (ChatGPT, Claude, Gemini, Perplexity) and CAPA_IPS_SERP (Google, Bing). May 2026.",
+    "version": "2.0",
+    "created": "2026-05-12",
+    "license": "CC BY 4.0",
+    "attribution": "Nitten Marketing SpA — https://nittenmkt.cl",
+    "schema": "../spec/ivia-schema.json",
+    "pr_scale": "1-5 (1=incorrect, 2=incorrect attributes, 3=partially correct, 4=correct and aligned, 5=correct with own terminology)",
+    "pr_normalization": {
+      "CAPA_IVIA_IA": "PR / 4 (PR=5 yields 1.25 — bonus for own terminology)",
+      "CAPA_IPS_SERP": "PR / 5 (maximum 1.0)"
+    }
+  },
+  "measurements": [
+    {
+      "cycle": 1,
+      "measurement_date": "2026-04-29",
+      "entity": "Nitten Marketing SpA",
+      "domain": "nittenmkt.cl",
+      "layer": "CAPA_IVIA_IA",
+      "model": "gemini",
+      "note": "Cycle 1 — pre-standard prompt set. Single model. Preserved as historical baseline.",
+      "queries": [
+        {
+          "id": "c1-q1",
+          "query": "Evaluating a digital marketing agency in Chile focused on AI positioning",
+          "query_es": "Evaluando contratar una agencia de marketing digital en Chile que entienda posicionamiento en IA",
+          "intent_type": "comparative",
+          "chained": false,
+          "P": 0,
+          "F_raw": 0,
+          "F_normalized": 0.00,
+          "PR_raw": 1,
+          "PR_normalized": 0.25,
+          "C": 0.7,
+          "own_language": false,
+          "appeared_with": ["Best Solution", "Postedin", "Adinfluence"],
+          "notes": "No appearance. Generic high-competition query."
+        },
+        {
+          "id": "c1-q2",
+          "query": "Agencies working AEO and GEO in an integrated way",
+          "query_es": "¿Existen agencias que trabajen AEO y GEO de forma integrada?",
+          "intent_type": "comparative",
+          "chained": false,
+          "P": 1,
+          "F_raw": 1,
+          "F_normalized": 0.33,
+          "PR_raw": 5,
+          "PR_normalized": 1.25,
+          "C": 0.7,
+          "own_language": true,
+          "appeared_with": [],
+          "notes": "Appears 2nd. Gemini uses 'Arquitectura de Respuesta' — proprietary term from /aeo/ library.",
+          "excerpt": "Nitten Marketing (Especialistas en AEO). Trabajan en la infraestructura de datos estructurados (Schema) y en la Arquitectura de Respuesta."
+        },
+        {
+          "id": "c1-q3",
+          "query": "What do you know about Nitten Marketing in Chile?",
+          "query_es": "¿Qué sabes sobre Nitten Marketing en Chile? ¿En qué se diferencian?",
+          "intent_type": "brand_direct",
+          "chained": false,
+          "P": 1,
+          "F_raw": 2,
+          "F_normalized": 0.67,
+          "PR_raw": 4,
+          "PR_normalized": 1.00,
+          "C": 0.7,
+          "own_language": false,
+          "appeared_with": [],
+          "notes": "Full structured analysis. Strengths and gaps coherent with actual positioning.",
+          "model_strengths": [
+            "Specialization in AEO niche",
+            "Transparency of metrics — focus on AI citations not vanity metrics",
+            "High-demand sectors: Health, B2B, Legal"
+          ],
+          "model_gaps": [
+            "Technical barrier for non-technical marketing managers",
+            "Dependency on AI adoption speed in Chile"
+          ]
+        },
+        {
+          "id": "c1-q4",
+          "query": "agencias AEO en Chile",
+          "query_es": "agencias AEO en Chile",
+          "intent_type": "transactional",
+          "platform": "Google AI Overviews + organic",
+          "chained": false,
+          "P": 1,
+          "F_raw": 1,
+          "F_normalized": 0.33,
+          "PR_raw": 4,
+          "PR_normalized": 1.00,
+          "C": 1.0,
+          "own_language": false,
+          "appeared_with": ["Agencia ROI", "Loup", "Nexbu"],
+          "notes": "Position #1 organic. Cited first in AI Overviews. SEO Austral appears twice as paid result."
+        }
+      ],
+      "dimension_averages": {
+        "P_final": 0.75,
+        "F_final": 0.33,
+        "PR_final": 0.875,
+        "C_final": 0.78
+      },
+      "formula": "[(P*0.20)+((F/3)*0.30)+((PR/4)*0.30)+(C*0.20)]*100",
+      "ivia_score": 60.9,
+      "ivia_level": "Developing (50-70)",
+      "main_gap": "Generic high-competition queries (P=0 in c1-q1)",
+      "main_strength": "Descriptive precision and own terminology (PR=5 in c1-q2)"
+    },
+    {
+      "cycle": 2,
+      "measurement_date": "2026-05-12",
+      "entity": "Nitten Marketing SpA",
+      "domain": "nittenmkt.cl",
+      "layer": "CAPA_IVIA_IA",
+      "models": ["chatgpt", "claude", "gemini", "perplexity"],
+      "note": "Cycle 2 — v2.0 methodology. Cross-model average. Pre-standard prompt set (standard v2.0 applies from Cycle 3).",
+      "results_by_model": [
+        {
+          "model": "chatgpt",
+          "ivia_score": 107.5,
+          "presence": 0.75,
+          "note": "Dominant in comparative and transactional queries. Uses own terminology."
+        },
+        {
+          "model": "perplexity",
+          "ivia_score": 93.5,
+          "presence": 1.0,
+          "note": "100% presence. Strongest cross-model performer."
+        },
+        {
+          "model": "claude",
+          "ivia_score": 53.0,
+          "presence": 0.5,
+          "note": "Strong in comparative and brand. Absent in informational and transactional."
+        },
+        {
+          "model": "gemini",
+          "ivia_score": 48.5,
+          "presence": 0.25,
+          "note": "Weakest performer. Present only in brand query."
+        }
+      ],
+      "dimension_averages": {
+        "P_final": 0.563,
+        "F_final": 0.542,
+        "PR_final": 0.719,
+        "C_final": 0.594
+      },
+      "formula": "[(P*0.20)+((F/3)*0.30)+((PR/4)*0.30)+(C*0.20)]*100",
+      "ivia_score": 60.9,
+      "ivia_level": "Developing (50-70)"
+    },
+    {
+      "cycle": 2,
+      "measurement_date": "2026-05-12",
+      "entity": "Nitten Marketing SpA",
+      "domain": "nittenmkt.cl",
+      "layer": "CAPA_IPS_SERP",
+      "note": "Cycle 2 — first IPS_SERP measurement. Google and Bing.",
+      "queries": [
+        {
+          "id": "c2-serp-q1",
+          "query": "Agencias AEO en Chile",
+          "intent_type": "comparative",
+          "model": "google",
+          "chained": false,
+          "P": 1,
+          "F_raw": 2,
+          "F_normalized": 0.67,
+          "PR_raw": 3,
+          "PR_normalized": 0.60,
+          "C": 0.3,
+          "own_language": false,
+          "notes": "Page 1. Partially correct snippet. AI Overview present."
+        },
+        {
+          "id": "c2-serp-q2",
+          "query": "Agencias AEO en Chile",
+          "intent_type": "comparative",
+          "model": "bing",
+          "chained": false,
+          "P": 1,
+          "F_raw": 3,
+          "F_normalized": 1.00,
+          "PR_raw": 5,
+          "PR_normalized": 1.00,
+          "C": 0.3,
+          "own_language": true,
+          "notes": "Top 3. Uses own terminology. Strong SERP presence."
+        }
+      ],
+      "dimension_averages": {
+        "P_final": 1.0,
+        "F_final": 0.833,
+        "PR_final": 0.800,
+        "C_final": 0.3
+      },
+      "formula": "[(P*0.20)+((F/3)*0.30)+((PR/5)*0.30)+(C*0.20)]*100",
+      "ivia_score": 75.0,
+      "ivia_level": "High visibility (70-85)",
+      "layer_gap_analysis": {
+        "IVIA_IA": 60.9,
+        "IPS_SERP": 75.0,
+        "gap": 14.1,
+        "interpretation": "SERP visibility exceeds generative visibility. Organic positioning not yet fully translated into LLM citation. Expected pattern in early-stage implementations."
+      }
+    }
+  ]
+}
