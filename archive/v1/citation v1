@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use IVIA in your research or practice, please cite it as below."
+title: "IVIA — AI Visibility Index"
+abstract: "An experimental framework for measuring the visibility of entities in AI-generated responses. Evaluates four dimensions: Presence (P), Frequency (F), Precision (PR), and Context (C). Part of the SAGEO methodology for digital visibility in generative AI environments."
+version: "1.0"
+date-released: 2026-05-01
+license: CC-BY-4.0
+url: "https://github.com/NIttenmkt/ivia.index"
+repository-code: "https://github.com/NIttenmkt/ivia.index"
+keywords:
+  - AI visibility
+  - generative search
+  - AEO
+  - SAGEO
+  - LLM
+  - entity optimization
+  - answer engine optimization
+  - GEO
+  - digital marketing
+authors:
+  - name: "Nitten Marketing SpA"
+    alias: "nitten"
+    website: "https://nittenmkt.cl"
+    location: "Santiago, Chile"
+  - family-names: "Acuña"
+    given-names: "Maximiliano"
+    alias: "maxacuna"
+    affiliation: "Nitten Marketing SpA"
+    role: "Consolidation and presentation"
+references:
+  - type: article
+    title: "SAGEO como Sistema. Nueva lectura sobre el AEO"
+    authors:
+      - name: "Nitten Marketing SpA"
+    year: 2026
+    url: "https://nittenmkt.cl/aeo-como-sistema/"
