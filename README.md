@@ -2,7 +2,7 @@
 
 IVIA (AI Visibility Index) is an open two-layer framework for measuring how entities are recognized, cited, and described within AI-generated responses and traditional search results.
 
-IVIA is part of the SAGEO methodology (Search AI & Generative Engine Optimization), developed by Nitten Marketing SpA (Santiago, Chile) and first validated in April 2026 on the domain nittenmkt.cl.
+IVIA is part of the SAGEO methodology (Search AI & Generative Engine Optimization), developed by Maximiliano Acuña Vera at Nitten Marketing SpA (Santiago, Chile) and first validated in April 2026 on the domain nittenmkt.cl.
 
 **IVIA measures visibility where traditional SEO cannot: inside AI-generated answers.**
 
@@ -197,8 +197,8 @@ You are free to use, adapt, and build upon this framework for any purpose, inclu
 ## How to cite
 
 ```
-Nitten Marketing SpA. (2026). IVIA — AI Visibility Index (v2.0).
-GitHub. https://github.com/NIttenmkt/ivia.index
+Acuña Vera, M. (2026). IVIA — AI Visibility Index (v2.0).
+Nitten Marketing SpA. GitHub. https://github.com/NIttenmkt/ivia.index
 ```
 
 Or use the `CITATION.cff` file for automated citation tools.
@@ -207,10 +207,19 @@ Or use the `CITATION.cff` file for automated citation tools.
 
 ## Author
 
+**Maximiliano Acuña Vera**
+Creator of IVIA and SAGEO · Founder, Nitten Marketing SpA
+Santiago, Chile
+
+- LinkedIn: https://www.linkedin.com/in/maximiliano-acuñav/
+- More: https://nittenmkt.cl/aeo/fundador-maximiliano-acuna.md
+
+---
+
+## Organization
+
 **Nitten Marketing SpA**
 Santiago, Chile
 [nittenmkt.cl](https://nittenmkt.cl) · agencia@nittenmkt.cl
-
-Developed by the Nitten team. Consolidated and presented by Maximiliano Acuña, OCC.
 
 *Algoritmos que atraen. Activaciones que venden.*
